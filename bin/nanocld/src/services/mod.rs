@@ -19,6 +19,7 @@ mod secret;
 mod system;
 mod vm;
 mod vm_image;
+mod volume;
 
 pub async fn unhandled() -> HttpResult<web::HttpResponse> {
   Err(HttpError::not_found("Route or method unhandled"))

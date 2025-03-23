@@ -175,6 +175,21 @@ diesel::table! {
     }
 }
 
+diesel::table! {
+    volumes (key) {
+        key -> Uuid,
+        created_at -> Timestamptz,
+        updated_at -> Timestamptz,
+        name -> Varchar,
+        source -> Varchar,
+        destination -> Varchar,
+        subpath -> Varchar,
+        read_only -> Bool,
+        nocopy -> Bool,
+        opt -> Jsonb,
+    }
+}
+
 diesel::joinable!(cargoes -> namespaces (namespace_name));
 diesel::joinable!(cargoes -> object_process_statuses (status_key));
 diesel::joinable!(cargoes -> specs (spec_key));
@@ -190,20 +205,21 @@ diesel::joinable!(vms -> object_process_statuses (status_key));
 diesel::joinable!(vms -> specs (spec_key));
 
 diesel::allow_tables_to_appear_in_same_query!(
-  cargoes,
-  events,
-  jobs,
-  metrics,
-  namespaces,
-  node_group_links,
-  node_groups,
-  nodes,
-  object_process_statuses,
-  processes,
-  resource_kinds,
-  resources,
-  secrets,
-  specs,
-  vm_images,
-  vms,
+    cargoes,
+    events,
+    jobs,
+    metrics,
+    namespaces,
+    node_group_links,
+    node_groups,
+    nodes,
+    object_process_statuses,
+    processes,
+    resource_kinds,
+    resources,
+    secrets,
+    specs,
+    vm_images,
+    vms,
+    volumes,
 );

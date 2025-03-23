@@ -56,6 +56,9 @@ pub use task_manager::*;
 mod object_process_status;
 pub use object_process_status::*;
 
+mod volume;
+pub use volume::*;
+
 pub type Pool = R2D2Pool<ConnectionManager<PgConnection>>;
 pub type DBConn = PooledConnection<ConnectionManager<PgConnection>>;
 
